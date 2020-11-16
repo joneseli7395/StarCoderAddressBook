@@ -1,0 +1,89 @@
+﻿@model IEnumerable<StarCoderAddressBook.Models.Contact>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Your Contacts</h1>
+<hr />
+<br />
+
+<p>
+    <a class="btn btn-success" data-target="#createModal" data-toggle="modal">Add New Contact</a>
+</p>
+<br />
+<table class="myTable table-striped hover">
+    <thead>
+        <tr class="text-center">
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAdded)
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-primary" data-target="#editModal-@item.Id" data-toggle="modal">Edit</a>
+
+                    <a class="btn btn-primary" data-target="#detailsModal-@item.Id" data-toggle="modal">Details</a>
+
+                    <a class="btn btn-primary" data-target="#deleteModal-@item.Id" data-toggle="modal">Delete</a>
+
+                    @*//Delete Modal*@
+                    <div id="deleteModal-@item.Id" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn btn-modal align-right" data-dismiss="modal">×</button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <h4>Are you sure you want to delete this contact?</h4>
+                                </div>
+                                <div class="modal-footer text-center">
+                                    <form class="form-group" asp-action="Delete" asp-route-id="@item.Id">
+                                        <input type="submit" value="Delete" class="btn btn-danger" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @await Html.PartialAsync("~/Views/Shared/_DetailsPartial.cshtml", item)
+                    @await Html.PartialAsync("~/Views/Shared/_EditPartial.cshtml", item)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@await Html.PartialAsync("~/Views/Shared/_CreatePartial.cshtml", new Contact())
+

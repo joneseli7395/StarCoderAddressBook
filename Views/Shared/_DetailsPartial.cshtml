@@ -1,0 +1,89 @@
+﻿
+@model StarCoderAddressBook.Models.Contact
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@*//Details Modal*@
+<div id="detailsModal-@Model.Id" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn btn-modal" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <h4>Contact Details</h4>
+                <hr />
+                <div>
+                    <dl class="row">
+                        @*<dt class="col-sm-5">
+                            Avatar
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.FilePath)
+                        </dd>*@
+                        <dt class="col-sm-5">
+                            First Name
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.FirstName)
+                        </dd>
+                        <dt class="col-sm-5">
+                            Last Name
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.LastName)
+                        </dd>
+                        <dt class="col-sm-5">
+                            Phone Number
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Phone)
+                        </dd>
+                        <dt class="col-sm-5">
+                            E-Mail Address
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+                        <dt class="col-sm-5">
+                            Address 1
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Address1)
+                        </dd>
+                        <dt class="col-sm-5">
+                            Address 2
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Address2)
+                        </dd>
+                        <dt class="col-sm-5">
+                            City
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.City)
+                        </dd>
+                        <dt class="col-sm-5">
+                            State
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.State)
+                        </dd>
+                        <dt class="col-sm-5">
+                            Zip Code
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.ZipCode)
+                        </dd>
+                    </dl>
+                </div>
+
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
