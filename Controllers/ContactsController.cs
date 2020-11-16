@@ -11,7 +11,7 @@ using StarCoderAddressBook.Models;
 
 namespace StarCoderAddressBook.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ContactsController : Controller
     {
         private readonly ApplicationDbContext _context;
